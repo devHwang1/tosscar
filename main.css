@@ -15,7 +15,13 @@
 body {
     background-color: white;
     margin: 0;
+    padding: 0;
     overflow-x: hidden; /* 가로 스크롤바를 숨깁니다. */
+}
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .companyList{
@@ -84,3 +90,67 @@ body {
     cursor: pointer;
 }
 
+.container {
+    /* background-color: #202632; */
+    padding: 20px;
+}
+.insurance-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    margin-bottom: 25px;
+    border-radius: 5px;
+}
+.insurance-item img {
+    height: 60px;
+}
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+.btn {
+    padding: 6px 3px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    /* border: 2px solid #0064FF; */
+}
+.btn.signup {
+    width: 78px;
+    height: 26px;
+    background-color: #0071E3;
+    color: white;
+    border-radius: 48px;
+}
+.btn.share1 {
+    margin: 30px;
+    width: 324px;
+    height: 32px;
+    background-color: #0071E3;
+    color: white;
+    border-radius: 48px;
+}
+.btn.signup2 {
+    background-color: #0071E3;
+    color: white;
+    border: 0px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+.btn.share2 {
+    background-color: #0071E3;
+    color: white;
+    border: 0px;
+    border-radius: 30px;
+    font-size: 17px;
+}
+.btn.phone {
+    background-color: white;
+    color: #0064FF;
+}
+
+.call {
+    font-size: 14.5px;
+    color: #0066cc;
+}
