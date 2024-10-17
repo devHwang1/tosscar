@@ -11,6 +11,8 @@
     <link rel="favicon" href="img/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500&display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <meta property="og:url" content="http://tosscar.co.kr/">
     <meta property="og:title" content="Tosscar">
@@ -25,89 +27,83 @@
 </style>
 
 <body>
-    <div class="all" style="margin-bottom: 100px;">
+    <div class="all">
         <div class="topContent">
             <div class="title">
-                <img src="img/logo/logo_new.png" alt="" style="width: 135px;margin-top: 10px;margin-left: 26px;">
+                <img src="img/logo/logo_valley.png" alt="Tosscar Logo" class="logo">
+                <span class="verticle_line"></span>
+                <p style="margin-top: 2px;margin-left: 4px;">자동차 다이렉트</p>
             </div>
         </div>
+
         <div class="wrap">
-            <div style="margin-left: 30px; margin-top: 30px; font-size: 14px; color: #0071E3; font-weight: 700;">
-                    <p style="margin-bottom: 0px;">알면 좋은 다이렉트 보험</p>
-            </div>
-        
-            <div style="margin-left: 30px; font-size: 14px;">
-                <p style="font-size: 21px;font-weight: 900;margin-bottom: 5px;margin-top: 11px;">최저가 보험료로</p>
-                <p style="font-size: 21px;font-weight: 900;margin-top: 0px; margin-bottom: 0px;">가입해보세요</p>
+            <div class="intro-text">
+                <p class="subtitle">알면 좋은 다이렉트 보험</p>
+                <p class="title">최저가 보험료로 가입해보세요</p>
+                <div class="logo_circle_container">
+                    <img src="img/hd_circle.png" class="logo_circle animate__animated">
+                    <img src="img/ss_circle.png" class="logo_circle logo_circle_down animate__animated">
+                    <img src="img/kb_circle.png" class="logo_circle animate__animated">
+                    <img src="img/db_circle.png" class="logo_circle logo_circle_up animate__animated">
+                    <img src="img/mz_circle.png" class="logo_circle animate__animated">
+                </div>
+                <div class="price-container">
+                    <p class="price-title">최저 :</p>
+                    <p id="animated-price" class="price-value">435,421</p>
+                    <p class="price-unit">원</p>
+                </div>
             </div>
 
-            <div class="container">
-                <!-- 보험사 목록 -->
+            <div class="insurance-list">
                 <div class="insurance-item">
                     <img src="/img/logo/samsung.png" alt="삼성화재">
                     <div class="buttons">
-                        <div class="btn signup">
-                            <a class="btn signup2" href="https://direct.samsungfire.com/CR_MyAnycarWeb/overture_index.jsp?OTK=A2406AF0020" style="text-decoration: none;">보험가입</a>
-                        </div>
-                        <div class="btn phone"><a class="call">전화가입</a></div>
+                        <a class="btn signup2" href="https://direct.samsungfire.com/CR_MyAnycarWeb/overture_index.jsp?OTK=A2406AF0020">보험가입</a>
+                        <a class="btn phone ss" >전화가입</a>
                     </div>
                 </div>
-                
+
                 <div class="insurance-item">
                     <img src="/img/logo/db.png" alt="DB손해보험">
                     <div class="buttons">
-                        <div class="btn signup">
-                            <a class="btn signup2"  href="https://m.directdb.co.kr/product/at/pvuatarc/step1/formStepPre.do?partner_code=C460&CNC=150" style="text-decoration: none;">보험가입</a>
-                        </div>
-                        <div class="btn phone"><a class="call">전화가입</a></div>
+                        <a class="btn signup2" href="https://m.directdb.co.kr/product/at/pvuatarc/step1/formStepPre.do?partner_code=C460&CNC=150">보험가입</a>
+                        <a class="btn phone" href="tel:1600-1190">전화가입</a>
                     </div>
                 </div>
+
+                <!-- 동일한 방식으로 보험사 목록을 추가 -->
                 <div class="insurance-item">
-                    <img src="/img/logo/KB.png" alt="메리츠">
+                    <img src="/img/logo/KB.png" alt="KB 손해보험">
                     <div class="buttons">
-                        <div class="btn signup">
-                            <a class="btn signup2" href="https://m.kbinsure.co.kr:8547/dctapp/main.html#/car/gi/0001M?pid=1090049&code=0865&redirectYn=Y" style="text-decoration: none";>보험가입</a>
-                        </div>
-                        <div class="btn phone"><a class="call">전화가입</a></div>
+                        <a class="btn signup2" href="https://m.kbinsure.co.kr:8547/dctapp/main.html#/car/gi/0001M?pid=1090049&code=0865&redirectYn=Y">보험가입</a>
+                        <a class="btn phone" href="tel:1644-6418">전화가입</a>
                     </div>
                 </div>
+
                 <div class="insurance-item">
-                    <img src="/img/logo/HD.png" alt="현대해상 다이렉트">
+                    <img src="/img/logo/HD.png" alt="현대해상">
                     <div class="buttons">
-                        <div class="btn signup">
-                            <a class="btn signup2" href="https://mdirect.hi.co.kr/service.do?m=b5eef5f9a4&cnc_no=0364&media_no=B294&companyId=426&trackingNo=" style="text-decoration: none;">보험가입</a>
-                        </div>
-                        <div class="btn phone"><a class="call">전화가입</a></div>
+                        <a class="btn signup2" href="https://mdirect.hi.co.kr/service.do?m=b5eef5f9a4&cnc_no=0364&media_no=B294&companyId=426&trackingNo=">보험가입</a>
+                        <a class="btn phone" href="tel:050-6011-0961">전화가입</a>
                     </div>
                 </div>
-                <div class="insurance-item">
-                    <img src="/img/logo/AXA.png" alt="AXA">
-                    <div class="buttons">
-                        <div class="btn signup">
-                            <a class="btn signup2" href="https://m.axa.co.kr/mobdblcms/html/dmai/cal/dmai_cal_11_m.html?sm_flag=N&site_acq_src=0104522&cmpid=co_able_dis_sb_auto&relay_lang_type=ko&actionID=I01&utm_source=able&utm_medium=affiliate&utm_campaign=auto&cnc_no=alble0128" style="text-decoration: none;">보험가입</a>
-                        </div>
-                        <div class="btn phone"><a class="call">전화가입</a></div>
-                    </div>
-                </div>
+
                 <div class="insurance-item">
                     <img src="/img/logo/meritz.png" alt="메리츠">
                     <div class="buttons">
-                        <div class="btn signup">
-                            <a class="btn signup2" href="https://store.meritzfire.com/DAP2406CA000005/southeaster.do" style="text-decoration: none;">보험가입</a>
-                        </div>
-                        <div class="btn phone"><a class="call">전화가입</a></div>
+                        <a class="btn signup2" href="https://store.meritzfire.com/DAP2406CA000005/southeaster.do">보험가입</a>
+                        <a class="btn phone mz" href="tel:+821012345678">전화가입</a>
                     </div>
                 </div>
-                
-        
-                <!-- 반복되는 보험사들 -->
-                <!-- 다른 보험사들도 이와 동일한 구조로 추가 -->
-        
+                <div class="insurance-item">
+                    <img src="/img/logo/AXA.png" alt="axa">
+                    <div class="buttons">
+                        <a class="btn signup2" href="https://m.axa.co.kr/mobdblcms/html/dmai/cal/dmai_cal_11_m.html?sm_flag=N&site_acq_src=0104522&cmpid=co_able_dis_sb_auto&relay_lang_type=ko&actionID=I01&utm_source=able&utm_medium=affiliate&utm_campaign=auto&cnc_no=alble0128">보험가입</a>
+                        <a class="btn phone" href="tel:1566-2156">전화가입</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- <div class="btn share1">
-            <a class="btn share2" href="https://store.meritzfire.com/DAP2406CA000005/southeaster.do" style="text-decoration: none;">친구에게 공유하기</a>
-        </div> -->
     </div>
 
 
@@ -122,75 +118,71 @@
         <p style="color: #808080; font-size: small; margin-left: 30px; margin-top: 3px;">#1104, 28, Seojeon-ro 10beon-gil, Busanjin-gu, Busan (Bujeon-dong)</p>
     </footer> -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    
+
     <script>
-        var shareButton = document.getElementById("shareButton");
+       document.getElementsByClassName("ss")[0].addEventListener("click", function() {
+    alert("삼성화재 다이렉트는 전화가입이 불가능합니다.");
+});
+       document.getElementsByClassName("mz")[0].addEventListener("click", function() {
+    alert("메리츠화재 다이렉트는 전화가입이 불가능합니다.");
+});
 
-        shareButton.addEventListener("click", function () {
-            // 링크를 복사
-           var linkToCopy = `토스카에서 자동차 보험료 조회하세요.
-                            주요 보험사의 가격을 조회할 수 있어요.
-                            
-                            http://tosscar.co.kr/`;
-            var tempInput = document.createElement("input");
-            document.body.appendChild(tempInput);
-            tempInput.value = linkToCopy;
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
+       
+// GSAP을 사용하여 자연스러운 숫자 애니메이션 적용
+// 숫자 리스트 준비
+const prices = ["435421", "564662", "392454"];
+let currentPriceIndex = 0;
 
-            // 메시지를 표시
-            alert("링크가 복사되었습니다");
-        });
-          // 모달 열기
-          document.getElementById("openModalButton").addEventListener("click", function () {
-        document.getElementById("myModal").style.display = "block";
-        setTimeout(function () {
-            document.getElementById("myModal").style.opacity = 1;
-        }, 10);
+function updatePrice() {
+  const nextPrice = prices[currentPriceIndex].padStart(6, '0'); // 숫자를 6자리로 고정
+
+  // 숫자 변환 및 애니메이션 적용
+  gsap.to("#animated-price", {
+    textContent: nextPrice,      // 다음 숫자로 전환
+    duration: 1.5,               // 애니메이션 지속 시간
+    ease: "power2.inOut",        // 부드러운 전환
+    snap: { textContent: 1 },    // 자연스러운 전환
+    onUpdate: function () {
+      // 천 단위 콤마 추가
+      document.getElementById("animated-price").textContent =
+        Math.floor(this.targets()[0].textContent).toLocaleString();
+    },
+    overwrite: "auto"            // 기존 애니메이션 덮어쓰기
+  });
+
+  // 다음 숫자로 전환 (리스트 순환)
+  currentPriceIndex = (currentPriceIndex + 1) % prices.length;
+
+  // 일정 시간 후 다음 숫자로 전환 (3초 간격)
+  setTimeout(updatePrice, 3000);
+}
+
+// 첫 애니메이션 실행
+updatePrice();
+
+
+
+  //const image = document.getElementById('animatedImage');
+  const images = document.getElementsByClassName('animate__animated');
+
+function triggerAnimation() {
+    Array.from(images).forEach(image => {
+        image.classList.add('animate__flip'); // 애니메이션 추가
+        image.addEventListener('animationend', () => {
+            image.classList.remove('animate__flip'); // 애니메이션 종료 후 제거
+        }, { once: true });
     });
+}
 
-    // 모달 닫기 (닫기 버튼 또는 모달 배경 클릭)
-    document.getElementById("closeModalButton").addEventListener("click", function () {
-        document.getElementById("myModal").style.opacity = 0;
-        setTimeout(function () {
-            document.getElementById("myModal").style.display = "none";
-        }, 500); // 0.5초 후 모달 숨김
-    });
-
-    document.getElementById("saveChangesButton").addEventListener("click", function () {
-        // 모달을 닫음
-        document.getElementById("myModal").style.opacity = 0;
-        setTimeout(function () {
-            document.getElementById("myModal").style.display = "none";
-        }, 500)
-    }); // 0.5초 후 모달 숨김
+// 3초마다 flip 애니메이션을 반복
+setInterval(triggerAnimation, 3000);
 
 
-    
 
-    // 모달 배경 클릭으로 모달 닫기
-    document.getElementById("myModal").addEventListener("click", function (event) {
-        if (event.target === document.getElementById("myModal")) {
-            document.getElementById("myModal").style.opacity = 0;
-            setTimeout(function () {
-                document.getElementById("myModal").style.display = "none";
-            }, 500); // 0.5초 후 모달 숨김
-        }
-    });
 
-    document.getElementById("showMoreButton").addEventListener("click", function () {
-        var moreInsurance = document.getElementById("moreInsurance");
 
-        if (moreInsurance.style.display === "none" || moreInsurance.style.display === "") {
-            moreInsurance.style.display = "block";
-            this.innerText = "숨기기";  // 버튼 텍스트를 "숨기기"로 변경
-        } else {
-            moreInsurance.style.display = "none";
-            this.innerText = "더보기";  // 버튼 텍스트를 다시 "더보기"로 변경
-        }
-    });
-
-    
     </script>
 </body>
 
