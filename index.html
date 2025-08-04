@@ -1,219 +1,516 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="favicon" href="img/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500&display=swap"
-    rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph Meta Tags -->
     <meta property="og:url" content="https://tosscar.co.kr/">
     <meta property="og:title" content="tosscar">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://tosscar.co.kr/img/logo/Frame3.png">
     <meta property="og:description" content="심플한 자동차 다이렉트 보험, 토스카">
+    
     <title>토스카</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background-color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding-bottom: 100px;
+        }
+
+        /* Header */
+        .header {
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px;
+            padding-bottom: 0px;
+        }
+
+        .logo {
+            width: 135px;
+            height: auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 30px 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .main-title p {
+            margin: 5px 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 40px 0 20px 0;
+        }
+
+        /* Insurance Cards */
+        .insurance-card {
+            width: 100%;
+            max-width: 325px;
+            height: 80px;
+            background-color: #f4f4f4;
+            margin: 0 auto 8px auto;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s ease;
+            position: relative;
+        }
+
+        .insurance-card:hover {
+            background-color: #efefef;
+        }
+
+        .insurance-logo {
+            width: 60px;
+            height: auto;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .insurance-info {
+            flex-grow: 1;
+        }
+
+        .insurance-company {
+            font-size: 13px;
+            color: #808080;
+            margin-bottom: 5px;
+        }
+
+        .insurance-benefit {
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .arrow-icon {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        /* Special Cards */
+        .special-card {
+            width: 100%;
+            max-width: 325px;
+            height: 80px;
+            background-color: #f4f4f4;
+            margin: 0 auto 8px auto;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .special-card:hover {
+            background-color: #efefef;
+        }
+
+        .special-icon {
+            width: 38px;
+            height: 38px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            width: 90%;
+            max-width: 400px;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s ease;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .modal h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .modal ul {
+            text-align: left;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .modal li {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .modal button {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .modal button:hover {
+            background-color: #333;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            background-color: #000;
+            padding: 30px 20px;
+            color: #808080;
+        }
+
+        .footer-logo {
+            width: 110px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            font-size: 12px;
+            margin: 3px 0;
+            line-height: 1.4;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .insurance-card,
+            .special-card {
+                max-width: 100%;
+                margin: 0 0 8px 0;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 25px 15px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .main-title {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Noto+Sans+KR:wght@600;700&display=swap');
-</style>
-
 <body>
-    <div class="all" style="margin-bottom: 100px;">
-        <div class="topContent">
-            <div class="title">
-                <img src="img/tosscarLogo2.png" alt="" style="width: 135px;margin-top: 10px;margin-left: 10px; margin-bottom: 10px;">
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="img/tosscarLogo2.png" alt="토스카 로고" class="logo">
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="main-title">
+                <p>쉽고 간편한 다이렉트 보험</p>
+                <p>토스카</p>
+            </div>
+            
+            <div class="subtitle">
+                토스카를 만나면 쉽고 안전한 보험 라이프를 선사합니다.
+            </div>
+
+            <h3 class="section-title">보험료 조회하고 혜택받기</h3>
+
+            <!-- 삼성화재 -->
+            <a href="https://mdirect.kbinsure.co.kr/websquare/mobilePromotion.jsp?pid=1090049&code=0837&page=m_step1" class="insurance-card">
+                <img src="img/samsungLogo.png" alt="삼성화재 로고" class="insurance-logo">
+                <div class="insurance-info">
+                    <div class="insurance-company">삼성화재 다이렉트</div>
+                    <div class="insurance-benefit">최대 3만원 캐시백</div>
+                </div>
+                <img src="img/enter.png" alt="이동" class="arrow-icon">
+            </a>
+
+            <!-- KB손해보험 -->
+            <a href="https://mdirect.kbinsure.co.kr/websquare/mobilePromotion.jsp?pid=1090049&code=0837&page=m_step1" class="insurance-card">
+                <img src="img/kbsym.png" alt="KB손해보험 로고" class="insurance-logo">
+                <div class="insurance-info">
+                    <div class="insurance-company">KB손해보험 다이렉트</div>
+                    <div class="insurance-benefit">최대 3만원 캐시백</div>
+                </div>
+                <img src="img/enter.png" alt="이동" class="arrow-icon">
+            </a>
+
+            <!-- 현대해상 -->
+            <a href="https://mdirect.hi.co.kr/service.do?m=b5eef5f9a4&cnc_no=0364&media_no=B294&companyId=426&trackingNo=" class="insurance-card">
+                <img src="img/hdsym.png" alt="현대해상 로고" class="insurance-logo">
+                <div class="insurance-info">
+                    <div class="insurance-company">현대해상 손해보험 다이렉트</div>
+                    <div class="insurance-benefit">최대 3만원 혜택</div>
+                </div>
+                <img src="img/enter.png" alt="이동" class="arrow-icon">
+            </a>
+
+            <!-- DB손해보험 -->
+            <a href="https://m.directdb.co.kr/product/at/pvuatarc/step1/formStepPre.do?partner_code=C460&CNC=150" class="insurance-card">
+                <img src="img/dbsym.png" alt="DB손해보험 로고" class="insurance-logo" style="margin-right: 32px; margin-left: 13px; width: 32px;">
+                <div class="insurance-info">
+                    <div class="insurance-company">DB손해보험 다이렉트</div>
+                    <div class="insurance-benefit">최대 3만원 혜택</div>
+                </div>
+                <img src="img/enter.png" alt="이동" class="arrow-icon">
+            </a>
+
+            <!-- AXA손해보험 -->
+            <a href="https://m.axa.co.kr/mobdblcms/html/dmai/cal/dmai_cal_11_m.html?sm_flag=N&site_acq_src=0104522&cmpid=co_able_dis_sb_auto&relay_lang_type=ko&actionID=I01&utm_source=able&utm_medium=affiliate&utm_campaign=auto&cnc_no=alble0128" class="insurance-card">
+                <img src="img/AXA.png" alt="AXA손해보험 로고" class="insurance-logo">
+                <div class="insurance-info">
+                    <div class="insurance-company">AXA손해보험 다이렉트</div>
+                    <div class="insurance-benefit">최대 3만원 혜택</div>
+                </div>
+                <img src="img/enter.png" alt="이동" class="arrow-icon">
+            </a>
+
+            <!-- 메리츠 -->
+            <a href="https://m.eyoudirect.co.kr/?ccid=0584001013#/" class="insurance-card" style="margin-bottom: 50px;">
+                <img src="img/meritz.png" alt="메리츠 로고" class="insurance-logo">
+                <div class="insurance-info">
+                    <div class="insurance-company">메리츠 다이렉트</div>
+                    <div class="insurance-benefit">최대 3만원 혜택</div>
+                </div>
+                <img src="img/enter.png" alt="이동" class="arrow-icon">
+            </a>
+
+            <h3 class="section-title">운전자보험, 필연적 선택</h3>
+            
+            <a href="https://m.kbinsure.co.kr:8547/dctapp/main.html#/GLM/DR/LT_CM0101M?pid=5000000&code=0003&redirectYn=Y" class="special-card">
+                <img src="img/check.png" alt="체크" class="special-icon">
+                <div class="insurance-info">
+                    <div class="insurance-company">자동차 사고 대비해야겠죠?</div>
+                    <div class="insurance-benefit">운전자보험 알아보기</div>
+                </div>
+                <img src="img/enter.png" alt="이동" class="arrow-icon">
+            </a>
+
+            <h3 class="section-title">어렵고 복잡한 보험, 모두와 쉽고 즐겁게!</h3>
+            
+            <div class="special-card" id="shareButton">
+                <img src="img/share.png" alt="공유" class="special-icon">
+                <div class="insurance-info">
+                    <div class="insurance-company">좋은일은 함께가 더 좋겠죠?</div>
+                    <div class="insurance-benefit">친구에게 공유하기</div>
+                </div>
+                <img src="img/enter.png" alt="이동" class="arrow-icon">
+            </div>
+
+            <h3 class="section-title">보험 가입시 알아두실 사항</h3>
+            
+            <div class="special-card" id="openModalButton">
+                <img src="img/info.png" alt="정보" class="special-icon">
+                <div class="insurance-info">
+                    <div class="insurance-company">안전하고, 꼼꼼하게</div>
+                    <div class="insurance-benefit">가입사항 알아보기</div>
+                </div>
+                <img src="img/enter.png" alt="이동" class="arrow-icon">
             </div>
         </div>
-        <div class="wrap">
-            <div style="margin: 30px; font-size: 14px;">
-                <h1 style="text-align: center ; ">
-                    <p style="margin-bottom: 0px;">쉽고 간편한 다이렉트 보험</p>
-                    <p style="margin-top: 0px;">토스카</p>
-                </h1>
-            </div>
-            <div style="text-align: center; margin: 30px;">토스카를 만나면 쉽고
-                안전한 보험 라이프를 선사합니다.</div>
-            <h3 class="title2" style="text-align: center;">
-                보험료 조회하고 혜택받기
-            </h3>
-            <!-- 삼성 -->
-            <a href="https://mdirect.kbinsure.co.kr/websquare/mobilePromotion.jsp?pid=1090049&code=0837&page=m_step1" style="text-decoration: none;">
-            <div style="width: 325px; height: 80px; background-color: #F4F4F4; margin: 0 auto; margin-bottom: 8px;">
-                <img src="img/samsungLogo.png" alt="" style="width: 68px;position: relative;left: 6px;bottom: -15px;">
-                <p style="width: 200px;position: relative;bottom: 51px;font-size: 13px;left: 80px;color: gray;">삼성화재 다이렉트</p>
-                <p style="width: 200px;position: relative;bottom: 65px;left: 80px;font-weight: 600;color: black;">최대 3만원 캐시백</p>
-                <img src="img/enter.png" alt="" style="width: 14px;position: relative;bottom: 115px;left: 302px;">
-            </div>
-            </a>
-            <!-- KB -->
-            <a href="https://mdirect.kbinsure.co.kr/websquare/mobilePromotion.jsp?pid=1090049&code=0837&page=m_step1" style="text-decoration: none;">
-            <div style="width: 325px; height: 80px; background-color: #F4F4F4; margin: 0 auto; margin-bottom: 8px;">
-                <img src="img/kbsym.png" alt="" style="width: 80px;position: relative;left: 1px;bottom: 1px;">
-                <p style="width: 200px;position: relative;bottom: 82px;font-size: 13px;left: 80px;color: gray;">KB손해보험 다이렉트</p>
-                <p style="width: 200px;position: relative;bottom: 95px;left: 80px;font-weight: 600;color: black;">최대 3만원 캐시백</p>
-                <img src="img/enter.png" alt="" style="width: 14px;position: relative;bottom: 143px;left: 302px;">
-            </div>
-            </a>
-            <!-- 현대 -->
-            <a href="https://mdirect.hi.co.kr/service.do?m=b5eef5f9a4&cnc_no=0364&media_no=B294&companyId=426&trackingNo=" style="text-decoration: none;">
-            <div style="width: 325px; height: 80px; background-color: #F4F4F4; margin: 0 auto; margin-bottom: 8px;">
-                <img src="img/hdsym.png" alt="" style="width: 65px;position: relative;left: 8px;bottom: -7px;">
-                <p style="width: 200px;position: relative;bottom: 64px;font-size: 13px; left: 80px;color: gray;">현대해상 손해보험 다이렉트</p>
-                <p style="width: 200px;position: relative;bottom: 81px;left: 80px;font-weight: 600; color: black">최대 3만원 혜택</p>
-                <img src="img/enter.png" alt="" style="width: 14px;position: relative;bottom: 127px;left: 302px;">
-            </div>
-            </a>
-            <!-- 동부 -->
-            <a href="https://m.directdb.co.kr/product/at/pvuatarc/step1/formStepPre.do?partner_code=C460&CNC=150" style="text-decoration: none;">
-            <div style="width: 325px; height: 80px; background-color: #F4F4F4; margin: 0 auto; margin-bottom: 8px;">
-                <img src="img/dbsym.png" alt="" style="width: 31px;position: relative;left: 26px;bottom: -20px;">
-                <p style="width: 200px;position: relative;bottom: 38px;font-size: 13px; left: 80px;color: gray;">DB손해보험 다이렉트</p>
-                <p style="width: 200px;position: relative;bottom: 54px;left: 80px;font-weight: 600; color: black">최대 3만원 혜택</p>
-                <img src="img/enter.png" alt="" style="width: 14px;position: relative;bottom: 101px;left: 302px;">
-            </div>
-            </a>
-            <!-- axa -->
-            <a href="https://m.axa.co.kr/mobdblcms/html/dmai/cal/dmai_cal_11_m.html?sm_flag=N&site_acq_src=0104522&cmpid=co_able_dis_sb_auto&relay_lang_type=ko&actionID=I01&utm_source=able&utm_medium=affiliate&utm_campaign=auto&cnc_no=alble0128" style="text-decoration: none;">
-            <div style="width: 325px; height: 80px; background-color: #F4F4F4; margin: 0 auto; margin-bottom: 8px;">
-                <img src="img/AXA.png" alt="" style="width: 69px;position: relative;left: 6px;bottom: -13px;">
-                <p style="width: 200px;position: relative;bottom: 51px;font-size: 13px; left: 80px;color: gray;">AXA손해보험 다이렉트</p>
-                <p style="width: 200px;position: relative;bottom: 69px;left: 80px;font-weight: 600; color: black">최대 3만원 혜택</p>
-                <img src="img/enter.png" alt="" style="width: 14px;position: relative;bottom: 117px;left: 302px;">
-            </div>
-            </a>
-            <!-- 메리츠 -->
-            <a href="https://m.eyoudirect.co.kr/?ccid=0584001013#/" style="text-decoration: none;">
-            <div style="width: 325px; height: 80px; background-color: #F4F4F4; margin: 0 auto; margin-bottom: 8px; margin-bottom: 50px;">
-                <img src="img/meritz.png" alt="" style="width: 91px;position: relative;left: -4px;bottom: -13px;">
-                <p style="width: 200px;position: relative;bottom: 52px;font-size: 13px; left: 80px;color: gray;">메리츠 다이렉트</p>
-                <p style="width: 200px;position: relative;bottom: 68px;left: 80px;font-weight: 600; color: black">최대 3만원 혜택</p>
-                <img src="img/enter.png" alt="" style="width: 14px;position: relative;bottom: 116px;left: 302px;">
-            </div>
-            </a>
-            <h3 class="title2" style="text-align: center;">
-                운전자보험, 필연적 선택
-            </h3>
-            <a href="https://m.kbinsure.co.kr:8547/dctapp/main.html#/GLM/DR/LT_CM0101M?pid=5000000&code=0003&redirectYn=Y" style="text-decoration: none;"> 
-            <div style="width: 325px; height: 80px; background-color: #F4F4F4; margin: 0 auto; margin-bottom: 8px; " >
-                <img src="img/check.png" alt="" style="width: 38px;position: relative;left: 21px;bottom: -21px;">
-                <p style="width: 200px;position: relative;bottom: 36px;font-size: 13px; left: 80px;color: gray;">자동차 사고 대비해야겠죠?</p>
-                <p style="width: 200px;position: relative;bottom: 53px;left: 80px;font-weight: 600; color: black">운전자보험 알아보기</p>
-                <img src="img/enter.png" alt="" style="width: 14px;position: relative;bottom: 100px;left: 302px;">
-            </div>
-            </a>
-            <h3 class="title2" style="text-align: center;">
-                어렵고 복잡한 보험, 모두와 쉽고 즐겁게!
-            </h3> 
-            <div style="width: 325px; height: 80px; background-color: #F4F4F4; margin: 0 auto; margin-bottom: 8px;" id="shareButton">
-                <img src="img/share.png" alt="" style="width: 38px;position: relative;left: 21px;bottom: -21px;">
-                <p style="width: 200px;position: relative;bottom: 38px;font-size: 13px; left: 80px;color: gray;">좋은일은 함께가 더 좋겠죠?</p>
-                <p style="width: 200px;position: relative;bottom: 53px;left: 80px;font-weight: 600;">친구에게 공유하기</p>
-                <img src="img/enter.png" alt="" style="width: 14px;position: relative;bottom: 100px;left: 302px;">
-            </div>
-            <h3 class="title2" style="text-align: center;">
-                보험 가입시 알아두실 사항
-            </h3> 
-            <div style="width: 325px; height: 80px; background-color: #F4F4F4; margin: 0 auto; margin-bottom: 8px;" id="openModalButton">
-                <img src="img/info.png" alt="" style="width: 38px;position: relative;left: 21px;bottom: -21px;">
-                <p style="width: 200px;position: relative;bottom: 38px;font-size: 13px; left: 80px;color: gray;">안전하고, 꼼꼼하게</p>
-                <p style="width: 200px;position: relative;bottom: 53px;left: 80px;font-weight: 600;">가입사항 알아보기</p>
-                <img src="img/enter.png" alt="" style="width: 14px;position: relative;bottom: 100px;left: 302px;">
-            </div>
 
-        <!-- 모달 -->
+        <!-- Modal -->
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close" id="closeModalButton">&times;</span>
-                <h4 style="margin-top: 10px;">보험 가입 시 알아두실 사항</h4>
-                <p>
-                    <li style="text-align: left; font-size: 13px;">
-                    이 보험계약은 예금자보호법에 따라 예금보험공사가 보호하되, 보호한도는 본 보험회사에 있는 귀하의 모든 예금보호대상 금융상품의 해약환급금(또는 만기시 보험금이나 사고보험금)에 기타 지급금을 합하여 1인당 "최고 5천만원"이며, 5천만원을 초과하는 나머지 금액은 보호하지 않습니다.
-                    </li>
-                    <li  style="text-align: left; font-size: 13px">
-                    보험계약자가 기존에 체결했던 보험계약을 해지하고 다른 보험계약을 체결하면 보험인수가 거절되거나 보험료가 인상되거나 보장내용이 달라질 수 있습니다.
-                    </li>
-                    <li  style="text-align: left; font-size: 13px">
-                    또한 지급한도, 면책사항 등에 따라 보험금 지급이 제한될 수 있습니다
-                    </li>
-                    <li  style="text-align: left; font-size: 13px">
-                    보험계약 체결 전 상품설명서 및 약관을 읽어보시기 바랍니다.</p>
-                    </li>
-                <button id="saveChangesButton" style="color: white; background-color: black;">확인</button>
+                <h4>보험 가입 시 알아두실 사항</h4>
+                <ul>
+                    <li>이 보험계약은 예금자보호법에 따라 예금보험공사가 보호하되, 보호한도는 본 보험회사에 있는 귀하의 모든 예금보호대상 금융상품의 해약환급금(또는 만기시 보험금이나 사고보험금)에 기타 지급금을 합하여 1인당 "최고 5천만원"이며, 5천만원을 초과하는 나머지 금액은 보호하지 않습니다.</li>
+                    <li>보험계약자가 기존에 체결했던 보험계약을 해지하고 다른 보험계약을 체결하면 보험인수가 거절되거나 보험료가 인상되거나 보장내용이 달라질 수 있습니다.</li>
+                    <li>또한 지급한도, 면책사항 등에 따라 보험금 지급이 제한될 수 있습니다.</li>
+                    <li>보험계약 체결 전 상품설명서 및 약관을 읽어보시기 바랍니다.</li>
+                </ul>
+                <button id="confirmButton">확인</button>
             </div>
         </div>
-        </div>
     </div>
-    <footer style="width: 100%; background-color: black; height: 200px;">
-        <img src="img/logo_black2.png" alt="" style="margin: 28px;width: 110px;">
-        <p style="color: #808080; font-size: small; margin-left: 30px; margin-top: 3px;">Tel :  051-638-3798 F : 051-638-3798</p>
-        <p style="color: #808080; font-size: small; margin-left: 30px; margin-bottom: 0px;">대표이사: 설진련 / 사업자번호 : 777-88-03503</p>
-        <p style="color: #808080; font-size: small; margin-left: 30px; margin-top: 3px;"> 부산광역시 부산진구 중앙대로 629-11, 402호(범천동) </p>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="img/logo_black2.png" alt="토스카 로고" class="footer-logo">
+        <p>Tel : 051-638-3798 F : 051-638-3798</p>
+        <p>대표이사: 설진련 / 사업자번호 : 777-88-03503</p>
+        <p>부산광역시 부산진구 중앙대로 629-11, 402호(범천동)</p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script>
-        var shareButton = document.getElementById("shareButton");
+        // 공유 기능
+        const shareButton = document.getElementById("shareButton");
+        shareButton.addEventListener("click", function() {
+            const linkToCopy = `토스카에서 자동차 보험료 조회하세요.
+주요 보험사의 가격을 조회할 수 있어요.
 
-        shareButton.addEventListener("click", function () {
-            // 링크를 복사
-           var linkToCopy = `토스카에서 자동차 보험료 조회하세요.
-                            주요 보험사의 가격을 조회할 수 있어요.
-                            
-                            https://tosscar.co.kr/`;
-            var tempInput = document.createElement("input");
-            document.body.appendChild(tempInput);
-            tempInput.value = linkToCopy;
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-
-            // 메시지를 표시
-            alert("링크가 복사되었습니다");
+https://tosscar.co.kr/`;
+            
+            // 최신 브라우저의 Clipboard API 사용
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(linkToCopy).then(() => {
+                    alert("링크가 복사되었습니다");
+                }).catch(() => {
+                    fallbackCopyTextToClipboard(linkToCopy);
+                });
+            } else {
+                fallbackCopyTextToClipboard(linkToCopy);
+            }
         });
-          // 모달 열기
-          document.getElementById("openModalButton").addEventListener("click", function () {
-        document.getElementById("myModal").style.display = "block";
-        setTimeout(function () {
-            document.getElementById("myModal").style.opacity = 1;
-        }, 10);
-    });
 
-    // 모달 닫기 (닫기 버튼 또는 모달 배경 클릭)
-    document.getElementById("closeModalButton").addEventListener("click", function () {
-        document.getElementById("myModal").style.opacity = 0;
-        setTimeout(function () {
-            document.getElementById("myModal").style.display = "none";
-        }, 500); // 0.5초 후 모달 숨김
-    });
-
-    document.getElementById("saveChangesButton").addEventListener("click", function () {
-        // 모달을 닫음
-        document.getElementById("myModal").style.opacity = 0;
-        setTimeout(function () {
-            document.getElementById("myModal").style.display = "none";
-        }, 500)
-    }); // 0.5초 후 모달 숨김
-
-
-    
-
-    // 모달 배경 클릭으로 모달 닫기
-    document.getElementById("myModal").addEventListener("click", function (event) {
-        if (event.target === document.getElementById("myModal")) {
-            document.getElementById("myModal").style.opacity = 0;
-            setTimeout(function () {
-                document.getElementById("myModal").style.display = "none";
-            }, 500); // 0.5초 후 모달 숨김
+        // 구형 브라우저용 fallback 복사 함수
+        function fallbackCopyTextToClipboard(text) {
+            const tempInput = document.createElement("textarea");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand("copy");
+                alert("링크가 복사되었습니다");
+            } catch (err) {
+                alert("복사하기 실패. 수동으로 복사해주세요.");
+            }
+            document.body.removeChild(tempInput);
         }
-    });
-    
+
+        // 모달 관련 기능
+        const modal = document.getElementById("myModal");
+        const openModalButton = document.getElementById("openModalButton");
+        const closeModalButton = document.getElementById("closeModalButton");
+        const confirmButton = document.getElementById("confirmButton");
+
+        // 모달 열기
+        openModalButton.addEventListener("click", function() {
+            modal.style.display = "flex";
+            setTimeout(() => {
+                modal.classList.add("show");
+            }, 10);
+        });
+
+        // 모달 닫기 함수
+        function closeModal() {
+            modal.classList.remove("show");
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 300);
+        }
+
+        // 모달 닫기 이벤트들
+        closeModalButton.addEventListener("click", closeModal);
+        confirmButton.addEventListener("click", closeModal);
+
+        // 모달 배경 클릭으로 닫기
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // ESC 키로 모달 닫기
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" && modal.classList.contains("show")) {
+                closeModal();
+            }
+        });
     </script>
 </body>
-
 </html>
