@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,29 +8,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="favicon" href="img/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:url" content="https://tosscar.co.kr/">
     <meta property="og:title" content="tosscar">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://tosscar.co.kr/img/logo/Frame3.png">
     <meta property="og:description" content="심플한 자동차 다이렉트 보험, 토스카">
-    
+
     <title>토스카</title>
-    
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Noto Sans KR', sans-serif;
         }
 
         body {
-            background-color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f5f7;
+            min-height: 100vh;
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.4705882353;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -41,16 +46,30 @@
 
         /* Header */
         .header {
-            border-bottom: 1px solid #e5e5e5;
-            padding: 10px;
+            background: rgba(251, 251, 253, 0.94);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.07);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            transition: transform 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .logo {
-            width: 135px;
+            width: 120px;
             height: auto;
         }
 
-        /* 라이트 테마용 로고 (기본) */
+        /* 라이트/다크 테마용 로고 */
         .logo-light {
             display: block;
         }
@@ -59,114 +78,86 @@
             display: none;
         }
 
-        /* 다크 테마일 때 로고 변경 */
-        @media (prefers-color-scheme: dark) {
-            .logo-light {
-                display: none;
-            }
-            
-            .logo-dark {
-                display: block;
-            }
-
-            /* 다크 테마일 때 전체적인 색상 조정 */
-            body {
-                background-color: #1a1a1a;
-                color: #ffffff;
-            }
-
-            .header {
-                border-bottom: 1px solid #333;
-                background-color: #1a1a1a;
-            }
-
-            .insurance-card,
-            .special-card {
-                background-color: #2a2a2a;
-                color: #ffffff;
-            }
-
-            .insurance-card:hover,
-            .special-card:hover {
-                background-color: #333;
-            }
-
-            .insurance-company {
-                color: #b0b0b0;
-            }
-
-            .modal-content {
-                background-color: #2a2a2a;
-                color: #ffffff;
-            }
-
-            .close {
-                color: #b0b0b0;
-            }
-
-            .close:hover {
-                color: #ffffff;
-            }
-        }
-
         /* Main Content */
         .main-content {
-            padding: 30px 20px;
-            max-width: 400px;
+            padding: 60px 20px 40px;
+            max-width: 375px;
             margin: 0 auto;
         }
 
-        .main-title {
+        .hero-section {
             text-align: center;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 80px;
+        }
+
+        .main-title {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.003em;
+            margin-bottom: 16px;
+            color: #1d1d1f;
         }
 
         .main-title p {
-            margin: 5px 0;
+            margin: 4px 0;
         }
 
         .subtitle {
-            text-align: center;
-            font-size: 14px;
-            color: #666;
+            font-size: 19px;
+            font-weight: 400;
+            color: #86868b;
             margin-bottom: 40px;
+            letter-spacing: 0.012em;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 16px;
-            font-weight: 600;
-            margin: 40px 0 20px 0;
+            text-align: left;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.003em;
+            margin: 60px 0 24px 0;
+            color: #1d1d1f;
         }
 
         /* Insurance Cards */
-        .insurance-card {
-            width: 100%;
-            max-width: 325px;
-            height: 80px;
-            background-color: #f4f4f4;
-            margin: 0 auto 8px auto;
-            border-radius: 8px;
+        .card-grid {
             display: flex;
-            align-items: center;
-            padding: 15px;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .insurance-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 20px;
             text-decoration: none;
             color: inherit;
-            transition: background-color 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
+            border: 0.5px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+            min-height: 76px;
         }
 
         .insurance-card:hover {
-            background-color: #efefef;
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .insurance-card:active {
+            transform: scale(0.98);
         }
 
         .insurance-logo {
-            width: 60px;
-            height: auto;
-            margin-right: 15px;
+            width: 63px;
+            height: 63px;
+            margin-right: 16px;
             flex-shrink: 0;
+            border-radius: 12px;
+            object-fit: contain;
         }
 
         .insurance-info {
@@ -174,49 +165,98 @@
         }
 
         .insurance-company {
-            font-size: 13px;
-            color: #808080;
-            margin-bottom: 5px;
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 2px;
+            font-weight: 400;
         }
 
         .insurance-benefit {
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 600;
-            color: #000;
+            color: #1d1d1f;
+            letter-spacing: -0.022em;
         }
 
         .arrow-icon {
-            width: 14px;
-            height: 14px;
+            width: 20px;
+            height: 20px;
             flex-shrink: 0;
+            opacity: 0.3;
+            transition: all 0.2s ease;
+        }
+
+        .insurance-card:hover .arrow-icon {
+            opacity: 0.6;
+            transform: translateX(2px);
         }
 
         /* Special Cards */
         .special-card {
-            width: 100%;
-            max-width: 325px;
-            height: 80px;
-            background-color: #f4f4f4;
-            margin: 0 auto 8px auto;
-            border-radius: 8px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 0.5px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
             display: flex;
             align-items: center;
-            padding: 15px;
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
+            min-height: 76px;
+            margin-bottom: 12px;
         }
 
         .special-card:hover {
-            background-color: #efefef;
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .special-card:active {
+            transform: scale(0.98);
         }
 
         .special-icon {
-            width: 38px;
-            height: 38px;
-            margin-right: 15px;
+            width: 48px;
+            height: 48px;
+            margin-right: 16px;
             flex-shrink: 0;
+            background: #f5f5f7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .special-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Driver Insurance Card - 특별한 색상 */
+        .driver-card .special-icon {
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+        }
+
+        .driver-card .special-icon img {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Share Card - 특별한 색상 */
+        .share-card .special-icon {
+            background: linear-gradient(135deg, #34C759, #30D158);
+        }
+
+        .share-card .special-icon img {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Info Card - 특별한 색상 */
+        .info-card .special-icon {
+            background: linear-gradient(135deg, #FF9500, #FF9F0A);
+        }
+
+        .info-card .special-icon img {
+            filter: brightness(0) invert(1);
         }
 
         /* Modal */
@@ -227,10 +267,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .modal.show {
@@ -241,16 +282,16 @@
         }
 
         .modal-content {
-            background-color: #fff;
+            background: #ffffff;
             width: 90%;
             max-width: 400px;
-            padding: 30px 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 32px 28px;
+            border-radius: 20px;
             text-align: center;
             position: relative;
-            transform: scale(0.7);
-            transition: transform 0.3s ease;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
         .modal.show .modal-content {
@@ -259,99 +300,264 @@
 
         .close {
             position: absolute;
-            top: 15px;
+            top: 16px;
             right: 20px;
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 24px;
+            font-weight: 300;
             cursor: pointer;
-            color: #999;
+            color: #86868b;
             transition: color 0.2s ease;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .close:hover {
-            color: #000;
+            color: #1d1d1f;
+            background: rgba(0, 0, 0, 0.04);
         }
 
         .modal h4 {
-            margin-bottom: 20px;
-            font-size: 18px;
+            margin-bottom: 24px;
+            font-size: 22px;
             font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.022em;
         }
 
         .modal ul {
             text-align: left;
             padding-left: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
         }
 
         .modal li {
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 10px;
+            font-size: 15px;
+            line-height: 1.4705882353;
+            margin-bottom: 12px;
+            color: #86868b;
+            font-weight: 400;
         }
 
         .modal button {
-            background-color: #000;
+            background: #007AFF;
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 6px;
+            padding: 12px 32px;
+            border-radius: 22px;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: background-color 0.2s ease;
+            font-size: 17px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            letter-spacing: -0.022em;
         }
 
         .modal button:hover {
-            background-color: #333;
+            background: #0056CC;
+            transform: translateY(-1px);
+        }
+
+        .modal button:active {
+            transform: translateY(0);
         }
 
         /* Footer */
         .footer {
-            width: 100%;
-            background-color: #000;
-            padding: 30px 20px;
-            color: #808080;
+            background: #1d1d1f;
+            padding: 40px 20px;
+            color: #86868b;
+        }
+
+        .footer-content {
+            max-width: 375px;
+            margin: 0 auto;
         }
 
         .footer-logo {
-            width: 110px;
+            width: 100px;
             height: auto;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            opacity: 0.8;
         }
 
         .footer p {
-            font-size: 12px;
-            margin: 3px 0;
-            line-height: 1.4;
+            font-size: 14px;
+            margin: 6px 0;
+            line-height: 1.4705882353;
+            font-weight: 400;
         }
 
-        /* Responsive Design */
-        @media (max-width: 480px) {
-            .main-content {
-                padding: 20px 15px;
+        /* 다크 모드 */
+        @media (prefers-color-scheme: dark) {
+            .logo-light {
+                display: none;
+            }
+
+            .logo-dark {
+                display: block;
+            }
+
+            body {
+                background: #000000;
+                color: #f5f5f7;
+            }
+
+            .header {
+                background: rgba(29, 29, 31, 0.72);
+                border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .main-title {
+                color: #f5f5f7;
+            }
+
+            .section-title {
+                color: #f5f5f7;
             }
 
             .insurance-card,
             .special-card {
+                background: #1c1c1e;
+                border: 0.5px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .insurance-benefit {
+                color: #f5f5f7;
+            }
+
+            .special-icon {
+                background: #2c2c2e !important;
+            }
+
+            .modal-content {
+                background: #1c1c1e;
+            }
+
+            .modal h4 {
+                color: #f5f5f7;
+            }
+
+            .close:hover {
+                color: #f5f5f7;
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 430px) {
+            .main-content {
+                padding: 50px 16px 40px;
                 max-width: 100%;
-                margin: 0 0 8px 0;
+            }
+
+            .main-title {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 17px;
+            }
+
+            .section-title {
+                font-size: 24px;
             }
 
             .modal-content {
                 width: 95%;
-                padding: 25px 15px;
+                padding: 28px 24px;
             }
         }
 
-        @media (max-width: 320px) {
+        @media (max-width: 375px) {
             .main-title {
-                font-size: 16px;
+                font-size: 24px;
             }
-            
+
             .section-title {
-                font-size: 14px;
+                font-size: 22px;
             }
+        }
+
+        /* 로딩 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-section {
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .insurance-card,
+        .special-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .insurance-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .insurance-card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .insurance-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .insurance-card:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .insurance-card:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        .insurance-card:nth-child(6) {
+            animation-delay: 0.35s;
+        }
+
+        .special-card:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+
+        .special-card:nth-child(2) {
+            animation-delay: 0.45s;
+        }
+
+        .special-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        /* 토스트 스타일 */
+        .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(29, 29, 31, 0.95);
+            color: #f5f5f7;
+            padding: 16px 24px;
+            border-radius: 16px;
+            font-size: 17px;
+            font-weight: 600;
+            z-index: 10001;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            letter-spacing: -0.022em;
         }
     </style>
 </head>
@@ -360,87 +566,103 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <img src="img/tosscarLogo2.png" alt="토스카 로고" class="logo logo-light">
-            <img src="img/logo_black2.png" alt="토스카 로고" class="logo logo-dark">
+            <div class="header-content">
+                <!-- HTML -->
+                <div class="text-logo">토스카</div>
+
+                <img src="img/logo_black2.png" alt="토스카 로고" class="logo logo-dark">
+            </div>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
-            <div class="main-title">
-                <p>쉽고 간편한 다이렉트 보험</p>
-                <p>토스카</p>
+            <div class="hero-section">
+                <div class="main-title">
+                    <p>쉽고 간편한</p>
+                    <p>다이렉트 보험</p>
+                </div>
+
+                <div class="subtitle">
+                    토스카를 만나면 쉽고 안전한<br>보험 라이프를 선사합니다.
+                </div>
             </div>
-            
-            <div class="subtitle">
-                토스카를 만나면 쉽고 안전한 보험 라이프를 선사합니다.
+
+            <h3 class="section-title">보험료 조회</h3>
+
+            <div class="card-grid">
+                <!-- 삼성화재 -->
+                <a href="https://mdirect.kbinsure.co.kr/websquare/mobilePromotion.jsp?pid=1090049&code=0837&page=m_step1"
+                    class="insurance-card">
+                    <img src="img/samsungLogo.png" alt="삼성화재 로고" class="insurance-logo">
+                    <div class="insurance-info">
+                        <div class="insurance-company">삼성화재 다이렉트</div>
+                        <div class="insurance-benefit">최대 3만원 캐시백</div>
+                    </div>
+                    <img src="img/enter.png" alt="이동" class="arrow-icon">
+                </a>
+
+                <!-- KB손해보험 -->
+                <a href="https://mdirect.kbinsure.co.kr/websquare/mobilePromotion.jsp?pid=1090049&code=0837&page=m_step1"
+                    class="insurance-card">
+                    <img src="img/kbsym.png" alt="KB손해보험 로고" class="insurance-logo">
+                    <div class="insurance-info">
+                        <div class="insurance-company">KB손해보험 다이렉트</div>
+                        <div class="insurance-benefit">최대 3만원 캐시백</div>
+                    </div>
+                    <img src="img/enter.png" alt="이동" class="arrow-icon">
+                </a>
+
+                <!-- 현대해상 -->
+                <a href="https://mdirect.hi.co.kr/service.do?m=b5eef5f9a4&cnc_no=0364&media_no=B294&companyId=426&trackingNo="
+                    class="insurance-card">
+                    <img src="img/hdsym.png" alt="현대해상 로고" class="insurance-logo">
+                    <div class="insurance-info">
+                        <div class="insurance-company">현대해상 손해보험 다이렉트</div>
+                        <div class="insurance-benefit">최대 3만원 혜택</div>
+                    </div>
+                    <img src="img/enter.png" alt="이동" class="arrow-icon">
+                </a>
+
+                <!-- DB손해보험 -->
+                <a href="https://m.directdb.co.kr/product/at/pvuatarc/step1/formStepPre.do?partner_code=C460&CNC=150"
+                    class="insurance-card">
+                    <img src="img/dbsym.png" alt="DB손해보험 로고" class="insurance-logo">
+                    <div class="insurance-info">
+                        <div class="insurance-company">DB손해보험 다이렉트</div>
+                        <div class="insurance-benefit">최대 3만원 혜택</div>
+                    </div>
+                    <img src="img/enter.png" alt="이동" class="arrow-icon">
+                </a>
+
+                <!-- AXA손해보험 -->
+                <a href="https://m.axa.co.kr/mobdblcms/html/dmai/cal/dmai_cal_11_m.html?sm_flag=N&site_acq_src=0104522&cmpid=co_able_dis_sb_auto&relay_lang_type=ko&actionID=I01&utm_source=able&utm_medium=affiliate&utm_campaign=auto&cnc_no=alble0128"
+                    class="insurance-card">
+                    <img src="img/AXA.png" alt="AXA손해보험 로고" class="insurance-logo">
+                    <div class="insurance-info">
+                        <div class="insurance-company">AXA손해보험 다이렉트</div>
+                        <div class="insurance-benefit">최대 3만원 혜택</div>
+                    </div>
+                    <img src="img/enter.png" alt="이동" class="arrow-icon">
+                </a>
+
+                <!-- 메리츠 -->
+                <a href="https://m.eyoudirect.co.kr/?ccid=0584001013#/" class="insurance-card">
+                    <img src="img/meritz.png" alt="메리츠 로고" class="insurance-logo">
+                    <div class="insurance-info">
+                        <div class="insurance-company">메리츠 다이렉트</div>
+                        <div class="insurance-benefit">최대 3만원 혜택</div>
+                    </div>
+                    <img src="img/enter.png" alt="이동" class="arrow-icon">
+                </a>
             </div>
 
-            <h3 class="section-title">보험료 조회하고 혜택받기</h3>
+            <h3 class="section-title">운전자보험</h3>
 
-            <!-- 삼성화재 -->
-            <a href="https://mdirect.kbinsure.co.kr/websquare/mobilePromotion.jsp?pid=1090049&code=0837&page=m_step1" class="insurance-card">
-                <img src="img/samsungLogo.png" alt="삼성화재 로고" class="insurance-logo">
-                <div class="insurance-info">
-                    <div class="insurance-company">삼성화재 다이렉트</div>
-                    <div class="insurance-benefit">최대 3만원 캐시백</div>
+            <a href="https://m.kbinsure.co.kr:8547/dctapp/main.html#/GLM/DR/LT_CM0101M?pid=5000000&code=0003&redirectYn=Y"
+                class="special-card driver-card">
+                <div class="special-icon">
+                    <img src="img/check.png" alt="체크">
                 </div>
-                <img src="img/enter.png" alt="이동" class="arrow-icon">
-            </a>
-
-            <!-- KB손해보험 -->
-            <a href="https://mdirect.kbinsure.co.kr/websquare/mobilePromotion.jsp?pid=1090049&code=0837&page=m_step1" class="insurance-card">
-                <img src="img/kbsym.png" alt="KB손해보험 로고" class="insurance-logo">
-                <div class="insurance-info">
-                    <div class="insurance-company">KB손해보험 다이렉트</div>
-                    <div class="insurance-benefit">최대 3만원 캐시백</div>
-                </div>
-                <img src="img/enter.png" alt="이동" class="arrow-icon">
-            </a>
-
-            <!-- 현대해상 -->
-            <a href="https://mdirect.hi.co.kr/service.do?m=b5eef5f9a4&cnc_no=0364&media_no=B294&companyId=426&trackingNo=" class="insurance-card">
-                <img src="img/hdsym.png" alt="현대해상 로고" class="insurance-logo">
-                <div class="insurance-info">
-                    <div class="insurance-company">현대해상 손해보험 다이렉트</div>
-                    <div class="insurance-benefit">최대 3만원 혜택</div>
-                </div>
-                <img src="img/enter.png" alt="이동" class="arrow-icon">
-            </a>
-
-            <!-- DB손해보험 -->
-            <a href="https://m.directdb.co.kr/product/at/pvuatarc/step1/formStepPre.do?partner_code=C460&CNC=150" class="insurance-card">
-                <img src="img/dbsym.png" alt="DB손해보험 로고" class="insurance-logo" style="margin-right: 32px; margin-left: 13px; width: 32px;">
-                <div class="insurance-info">
-                    <div class="insurance-company">DB손해보험 다이렉트</div>
-                    <div class="insurance-benefit">최대 3만원 혜택</div>
-                </div>
-                <img src="img/enter.png" alt="이동" class="arrow-icon">
-            </a>
-
-            <!-- AXA손해보험 -->
-            <a href="https://m.axa.co.kr/mobdblcms/html/dmai/cal/dmai_cal_11_m.html?sm_flag=N&site_acq_src=0104522&cmpid=co_able_dis_sb_auto&relay_lang_type=ko&actionID=I01&utm_source=able&utm_medium=affiliate&utm_campaign=auto&cnc_no=alble0128" class="insurance-card">
-                <img src="img/AXA.png" alt="AXA손해보험 로고" class="insurance-logo">
-                <div class="insurance-info">
-                    <div class="insurance-company">AXA손해보험 다이렉트</div>
-                    <div class="insurance-benefit">최대 3만원 혜택</div>
-                </div>
-                <img src="img/enter.png" alt="이동" class="arrow-icon">
-            </a>
-
-            <!-- 메리츠 -->
-            <a href="https://m.eyoudirect.co.kr/?ccid=0584001013#/" class="insurance-card" style="margin-bottom: 50px;">
-                <img src="img/meritz.png" alt="메리츠 로고" class="insurance-logo">
-                <div class="insurance-info">
-                    <div class="insurance-company">메리츠 다이렉트</div>
-                    <div class="insurance-benefit">최대 3만원 혜택</div>
-                </div>
-                <img src="img/enter.png" alt="이동" class="arrow-icon">
-            </a>
-
-            <h3 class="section-title">운전자보험, 필연적 선택</h3>
-            
-            <a href="https://m.kbinsure.co.kr:8547/dctapp/main.html#/GLM/DR/LT_CM0101M?pid=5000000&code=0003&redirectYn=Y" class="special-card">
-                <img src="img/check.png" alt="체크" class="special-icon">
                 <div class="insurance-info">
                     <div class="insurance-company">자동차 사고 대비해야겠죠?</div>
                     <div class="insurance-benefit">운전자보험 알아보기</div>
@@ -448,10 +670,12 @@
                 <img src="img/enter.png" alt="이동" class="arrow-icon">
             </a>
 
-            <h3 class="section-title">어렵고 복잡한 보험, 모두와 쉽고 즐겁게!</h3>
-            
-            <div class="special-card" id="shareButton">
-                <img src="img/share.png" alt="공유" class="special-icon">
+            <h3 class="section-title">공유하기</h3>
+
+            <div class="special-card share-card" id="shareButton">
+                <div class="special-icon">
+                    <img src="img/share.png" alt="공유">
+                </div>
                 <div class="insurance-info">
                     <div class="insurance-company">좋은일은 함께가 더 좋겠죠?</div>
                     <div class="insurance-benefit">친구에게 공유하기</div>
@@ -459,10 +683,12 @@
                 <img src="img/enter.png" alt="이동" class="arrow-icon">
             </div>
 
-            <h3 class="section-title">보험 가입시 알아두실 사항</h3>
-            
-            <div class="special-card" id="openModalButton">
-                <img src="img/info.png" alt="정보" class="special-icon">
+            <h3 class="section-title">가입 안내</h3>
+
+            <div class="special-card info-card" id="openModalButton">
+                <div class="special-icon">
+                    <img src="img/info.png" alt="정보">
+                </div>
                 <div class="insurance-info">
                     <div class="insurance-company">안전하고, 꼼꼼하게</div>
                     <div class="insurance-benefit">가입사항 알아보기</div>
@@ -477,7 +703,8 @@
                 <span class="close" id="closeModalButton">&times;</span>
                 <h4>보험 가입 시 알아두실 사항</h4>
                 <ul>
-                    <li>이 보험계약은 예금자보호법에 따라 예금보험공사가 보호하되, 보호한도는 본 보험회사에 있는 귀하의 모든 예금보호대상 금융상품의 해약환급금(또는 만기시 보험금이나 사고보험금)에 기타 지급금을 합하여 1인당 "최고 5천만원"이며, 5천만원을 초과하는 나머지 금액은 보호하지 않습니다.</li>
+                    <li>이 보험계약은 예금자보호법에 따라 예금보험공사가 보호하되, 보호한도는 본 보험회사에 있는 귀하의 모든 예금보호대상 금융상품의 해약환급금에 기타 지급금을 합하여 1인당 "최고
+                        5천만원"입니다.</li>
                     <li>보험계약자가 기존에 체결했던 보험계약을 해지하고 다른 보험계약을 체결하면 보험인수가 거절되거나 보험료가 인상되거나 보장내용이 달라질 수 있습니다.</li>
                     <li>또한 지급한도, 면책사항 등에 따라 보험금 지급이 제한될 수 있습니다.</li>
                     <li>보험계약 체결 전 상품설명서 및 약관을 읽어보시기 바랍니다.</li>
@@ -489,25 +716,27 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <img src="img/logo_black2.png" alt="토스카 로고" class="footer-logo">
-        <p>Tel : 051-638-3798 F : 051-638-3798</p>
-        <p>대표이사: 설진련 / 사업자번호 : 777-88-03503</p>
-        <p>부산광역시 부산진구 중앙대로 629-11, 402호(범천동)</p>
+        <div class="footer-content">
+            <img src="img/logo_black2.png" alt="토스카 로고" class="footer-logo">
+            <p>Tel : 051-638-3798 F : 051-638-3798</p>
+            <p>대표이사: 설진련 / 사업자번호 : 777-88-03503</p>
+            <p>부산광역시 부산진구 중앙대로 629-11, 402호(범천동)</p>
+        </div>
     </footer>
 
     <script>
         // 공유 기능
         const shareButton = document.getElementById("shareButton");
-        shareButton.addEventListener("click", function() {
+        shareButton.addEventListener("click", function () {
             const linkToCopy = `토스카에서 자동차 보험료 조회하세요.
 주요 보험사의 가격을 조회할 수 있어요.
 
 https://tosscar.co.kr/`;
-            
+
             // 최신 브라우저의 Clipboard API 사용
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(linkToCopy).then(() => {
-                    alert("링크가 복사되었습니다");
+                    showToast("링크가 복사되었습니다");
                 }).catch(() => {
                     fallbackCopyTextToClipboard(linkToCopy);
                 });
@@ -524,11 +753,31 @@ https://tosscar.co.kr/`;
             tempInput.select();
             try {
                 document.execCommand("copy");
-                alert("링크가 복사되었습니다");
+                showToast("링크가 복사되었습니다");
             } catch (err) {
                 alert("복사하기 실패. 수동으로 복사해주세요.");
             }
             document.body.removeChild(tempInput);
+        }
+
+        // 토스트 메시지 함수
+        function showToast(message) {
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.style.opacity = '1', 10);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
         }
 
         // 모달 관련 기능
@@ -538,7 +787,7 @@ https://tosscar.co.kr/`;
         const confirmButton = document.getElementById("confirmButton");
 
         // 모달 열기
-        openModalButton.addEventListener("click", function() {
+        openModalButton.addEventListener("click", function () {
             modal.style.display = "flex";
             setTimeout(() => {
                 modal.classList.add("show");
@@ -558,18 +807,223 @@ https://tosscar.co.kr/`;
         confirmButton.addEventListener("click", closeModal);
 
         // 모달 배경 클릭으로 닫기
-        modal.addEventListener("click", function(event) {
+        modal.addEventListener("click", function (event) {
             if (event.target === modal) {
                 closeModal();
             }
         });
 
         // ESC 키로 모달 닫기
-        document.addEventListener("keydown", function(event) {
+        document.addEventListener("keydown", function (event) {
             if (event.key === "Escape" && modal.classList.contains("show")) {
                 closeModal();
             }
         });
+
+        // 페이지 로드 후 실행
+        document.addEventListener('DOMContentLoaded', function () {
+            // 헤더 스크롤 효과 (애플 스타일)
+            let lastScrollTop = 0;
+            const header = document.querySelector('.header');
+
+            window.addEventListener('scroll', function () {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > lastScrollTop && scrollTop > 60) {
+                    // 스크롤 다운 - 헤더 숨김
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    // 스크롤 업 - 헤더 표시
+                    header.style.transform = 'translateY(0)';
+                }
+                lastScrollTop = scrollTop;
+            }, { passive: true });
+
+            // 스크롤 애니메이션 (Intersection Observer)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // 모든 카드에 observer 적용
+            document.querySelectorAll('.insurance-card, .special-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+        // 햅틱 피드백 시뮬레이션 (iOS Safari에서 지원)
+        function hapticFeedback() {
+            if (navigator.vibrate) {
+                navigator.vibrate(10);
+            }
+        }
+
+        // 모든 카드에 햅틱 피드백 추가
+        document.querySelectorAll('.insurance-card, .special-card').forEach(card => {
+            card.addEventListener('touchstart', hapticFeedback, { passive: true });
+        });
+
+        // 부드러운 스크롤 (Safari 호환)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 리사이즈 이벤트 최적화
+        let resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                // 리사이즈 후 레이아웃 재계산
+                document.body.style.height = 'auto';
+            }, 250);
+        }, { passive: true });
+
+        // iOS Safari 뷰포트 높이 보정
+        function setViewportHeight() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        setViewportHeight();
+        window.addEventListener('resize', setViewportHeight, { passive: true });
+        window.addEventListener('orientationchange', setViewportHeight, { passive: true });
+
+        // 성능 최적화를 위한 애니메이션 제어
+        let isAnimating = false;
+
+        document.querySelectorAll('.insurance-card, .special-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                if (!isAnimating) {
+                    isAnimating = true;
+                    this.style.willChange = 'transform';
+                }
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.willChange = 'auto';
+                isAnimating = false;
+            });
+        });
+
+        // 접근성 개선 - 키보드 네비게이션
+        document.addEventListener('keydown', function (event) {
+            // Tab 키 네비게이션 시 포커스 표시
+            if (event.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function () {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // 다크모드 전환 감지
+        if (window.matchMedia) {
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            mediaQuery.addEventListener('change', function (e) {
+                // 다크모드 전환 시 부드러운 전환 효과
+                document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+                setTimeout(() => {
+                    document.body.style.transition = '';
+                }, 300);
+            });
+        }
     </script>
+
+    <style>
+        /* 키보드 네비게이션 포커스 스타일 */
+        .keyboard-navigation .insurance-card:focus,
+        .keyboard-navigation .special-card:focus,
+        .keyboard-navigation .modal button:focus {
+            outline: 2px solid #007AFF;
+            outline-offset: 2px;
+        }
+
+        /* iOS Safari 뷰포트 높이 보정 */
+        .container {
+            min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100);
+        }
+
+        /* 성능 최적화 */
+        .insurance-card,
+        .special-card {
+            will-change: auto;
+            contain: layout style paint;
+        }
+
+        /* 터치 디바이스 최적화 */
+        @media (hover: none) and (pointer: coarse) {
+
+            .insurance-card:hover,
+            .special-card:hover {
+                transform: none;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            }
+
+            .insurance-card:active,
+            .special-card:active {
+                transform: scale(0.98);
+                transition-duration: 0.1s;
+            }
+        }
+
+        /* 고대비 모드 지원 */
+        @media (prefers-contrast: high) {
+
+            .insurance-card,
+            .special-card {
+                border: 1px solid #000000;
+            }
+
+            .insurance-company {
+                color: #666666;
+            }
+        }
+
+        /* 애니메이션 감소 설정 지원 */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* CSS */
+        .text-logo {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #000203, #000203);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            user-select: none;
+        }
+    </style>
 </body>
+
 </html>
