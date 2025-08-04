@@ -43,12 +43,70 @@
         .header {
             border-bottom: 1px solid #e5e5e5;
             padding: 10px;
-            padding-bottom: 0px;
         }
 
         .logo {
             width: 135px;
             height: auto;
+        }
+
+        /* 라이트 테마용 로고 (기본) */
+        .logo-light {
+            display: block;
+        }
+
+        .logo-dark {
+            display: none;
+        }
+
+        /* 다크 테마일 때 로고 변경 */
+        @media (prefers-color-scheme: dark) {
+            .logo-light {
+                display: none;
+            }
+            
+            .logo-dark {
+                display: block;
+            }
+
+            /* 다크 테마일 때 전체적인 색상 조정 */
+            body {
+                background-color: #1a1a1a;
+                color: #ffffff;
+            }
+
+            .header {
+                border-bottom: 1px solid #333;
+                background-color: #1a1a1a;
+            }
+
+            .insurance-card,
+            .special-card {
+                background-color: #2a2a2a;
+                color: #ffffff;
+            }
+
+            .insurance-card:hover,
+            .special-card:hover {
+                background-color: #333;
+            }
+
+            .insurance-company {
+                color: #b0b0b0;
+            }
+
+            .modal-content {
+                background-color: #2a2a2a;
+                color: #ffffff;
+            }
+
+            .close {
+                color: #b0b0b0;
+            }
+
+            .close:hover {
+                color: #ffffff;
+            }
         }
 
         /* Main Content */
@@ -302,7 +360,8 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <img src="img/tosscarLogo2.png" alt="토스카 로고" class="logo">
+            <img src="img/tosscarLogo2.png" alt="토스카 로고" class="logo logo-light">
+            <img src="img/logo_black2.png" alt="토스카 로고" class="logo logo-dark">
         </div>
 
         <!-- Main Content -->
