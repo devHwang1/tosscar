@@ -232,16 +232,16 @@
             height: 24px;
         }
 
-        /* Driver Insurance Card - 특별한 색상 */
+        /* Driver Insurance Card - 로고 색상 기반 */
         .driver-card .special-icon {
-            background: linear-gradient(135deg, #007AFF, #5856D6);
+            background: linear-gradient(135deg, #2196F3, #1976D2);
         }
 
         .driver-card .special-icon img {
             filter: brightness(0) invert(1);
         }
 
-        /* Share Card - 특별한 색상 */
+        /* Share Card - 로고 색상과 조화로운 녹색 */
         .share-card .special-icon {
             background: linear-gradient(135deg, #34C759, #30D158);
         }
@@ -250,7 +250,7 @@
             filter: brightness(0) invert(1);
         }
 
-        /* Info Card - 특별한 색상 */
+        /* Info Card - 로고 색상과 조화로운 오렌지 */
         .info-card .special-icon {
             background: linear-gradient(135deg, #FF9500, #FF9F0A);
         }
@@ -343,7 +343,7 @@
         }
 
         .modal button {
-            background: #007AFF;
+            background: #2196F3;
             color: white;
             border: none;
             padding: 12px 32px;
@@ -356,7 +356,7 @@
         }
 
         .modal button:hover {
-            background: #0056CC;
+            background: #1976D2;
             transform: translateY(-1px);
         }
 
@@ -559,6 +559,81 @@
             transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             letter-spacing: -0.022em;
         }
+
+        /* 키보드 네비게이션 포커스 스타일 */
+        .keyboard-navigation .insurance-card:focus,
+        .keyboard-navigation .special-card:focus,
+        .keyboard-navigation .modal button:focus {
+            outline: 2px solid #2196F3;
+            outline-offset: 2px;
+        }
+
+        /* iOS Safari 뷰포트 높이 보정 */
+        .container {
+            min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100);
+        }
+
+        /* 성능 최적화 */
+        .insurance-card,
+        .special-card {
+            will-change: auto;
+            contain: layout style paint;
+        }
+
+        /* 터치 디바이스 최적화 */
+        @media (hover: none) and (pointer: coarse) {
+
+            .insurance-card:hover,
+            .special-card:hover {
+                transform: none;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            }
+
+            .insurance-card:active,
+            .special-card:active {
+                transform: scale(0.98);
+                transition-duration: 0.1s;
+            }
+        }
+
+        /* 고대비 모드 지원 */
+        @media (prefers-contrast: high) {
+
+            .insurance-card,
+            .special-card {
+                border: 1px solid #000000;
+            }
+
+            .insurance-company {
+                color: #666666;
+            }
+        }
+
+        /* 애니메이션 감소 설정 지원 */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* CSS */
+        .text-logo {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            user-select: none;
+        }
     </style>
 </head>
 
@@ -568,9 +643,7 @@
         <div class="header">
             <div class="header-content">
                 <!-- HTML -->
-                <div class="text-logo">토스카</div>
-
-                <img src="img/logo_black2.png" alt="토스카 로고" class="logo logo-dark">
+                <img src="img/twq.png" alt="토스카 로고" class="logo ">
             </div>
         </div>
 
@@ -948,82 +1021,6 @@ https://tosscar.co.kr/`;
         }
     </script>
 
-    <style>
-        /* 키보드 네비게이션 포커스 스타일 */
-        .keyboard-navigation .insurance-card:focus,
-        .keyboard-navigation .special-card:focus,
-        .keyboard-navigation .modal button:focus {
-            outline: 2px solid #007AFF;
-            outline-offset: 2px;
-        }
-
-        /* iOS Safari 뷰포트 높이 보정 */
-        .container {
-            min-height: 100vh;
-            min-height: calc(var(--vh, 1vh) * 100);
-        }
-
-        /* 성능 최적화 */
-        .insurance-card,
-        .special-card {
-            will-change: auto;
-            contain: layout style paint;
-        }
-
-        /* 터치 디바이스 최적화 */
-        @media (hover: none) and (pointer: coarse) {
-
-            .insurance-card:hover,
-            .special-card:hover {
-                transform: none;
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-            }
-
-            .insurance-card:active,
-            .special-card:active {
-                transform: scale(0.98);
-                transition-duration: 0.1s;
-            }
-        }
-
-        /* 고대비 모드 지원 */
-        @media (prefers-contrast: high) {
-
-            .insurance-card,
-            .special-card {
-                border: 1px solid #000000;
-            }
-
-            .insurance-company {
-                color: #666666;
-            }
-        }
-
-        /* 애니메이션 감소 설정 지원 */
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* CSS */
-        .text-logo {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #000203, #000203);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            user-select: none;
-        }
-    </style>
 </body>
 
 </html>
