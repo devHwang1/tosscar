@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="favicon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="img/umfavi.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Open Graph Meta Tags -->
@@ -62,6 +62,7 @@
             justify-content: flex-start;
             max-width: 400px;
             margin: 0 auto;
+            height: 35px;
         }
 
         .logo {
@@ -176,7 +177,9 @@
             font-weight: 600;
             color: #1d1d1f;
             letter-spacing: -0.022em;
+            text-decoration: none !important;
         }
+        
 
         .arrow-icon {
             width: 20px;
@@ -366,85 +369,68 @@
 
         /* Footer */
         .footer {
-            background: #1d1d1f;
-            padding: 40px 20px;
-            color: #86868b;
-        }
+    background: #ffffff;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.07);
+    padding: 40px 20px 30px;
+    color: #86868b;
+    margin-top: 40px;
+}
 
-        .footer-content {
-            max-width: 375px;
-            margin: 0 auto;
-        }
+.footer-content {
+    max-width: 375px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        .footer-logo {
-            width: 100px;
-            height: auto;
-            margin-bottom: 24px;
-            opacity: 0.8;
-        }
+.footer-logo {
+    width: 80px;
+    height: auto;
+    opacity: 0.6;
+}
 
-        .footer p {
-            font-size: 14px;
-            margin: 6px 0;
-            line-height: 1.4705882353;
-            font-weight: 400;
-        }
+.footer-info {
+    margin-bottom: 16px;
+}
 
-        /* 다크 모드 */
-        @media (prefers-color-scheme: dark) {
-            .logo-light {
-                display: none;
-            }
+.footer p {
+    font-size: 13px;
+    margin: 4px 0;
+    line-height: 1.5;
+    font-weight: 400;
+}
 
-            .logo-dark {
-                display: block;
-            }
+.footer-contact {
+    padding-top: 16px;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.05);
+}
 
-            body {
-                background: #000000;
-                color: #f5f5f7;
-            }
+.footer-contact p {
+    font-size: 12px;
+    color: #a1a1a6;
+}
 
-            .header {
-                background: rgba(29, 29, 31, 0.72);
-                border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
-            }
+/* 다크모드 푸터 */
+@media (prefers-color-scheme: dark) {
+    .footer {
+        background: #1c1c1e;
+        border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+    }
 
-            .main-title {
-                color: #f5f5f7;
-            }
+    .footer-contact {
+        border-top: 0.5px solid rgba(255, 255, 255, 0.05);
+    }
 
-            .section-title {
-                color: #f5f5f7;
-            }
+    .footer-contact p {
+        color: #636366;
+    }
+}
 
-            .insurance-card,
-            .special-card {
-                background: #1c1c1e;
-                border: 0.5px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .insurance-benefit {
-                color: #f5f5f7;
-            }
-
-            .special-icon {
-                background: #2c2c2e !important;
-            }
-
-            .modal-content {
-                background: #1c1c1e;
-            }
-
-            .modal h4 {
-                color: #f5f5f7;
-            }
-
-            .close:hover {
-                color: #f5f5f7;
-                background: rgba(255, 255, 255, 0.1);
-            }
-        }
+/* 반응형 */
+@media (max-width: 430px) {
+    .footer {
+        padding: 32px 16px 24px;
+    }
+}
 
         /* 반응형 디자인 */
         @media (max-width: 430px) {
@@ -643,7 +629,7 @@
         <div class="header">
             <div class="header-content">
                 <!-- HTML -->
-                <img src="img/twq.png" alt="토스카 로고" class="logo ">
+                <img src="img/logo/tosscarLogo_.png" alt="토스카 로고" class="logo ">
             </div>
         </div>
 
@@ -790,10 +776,17 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <img src="img/logo_black2.png" alt="토스카 로고" class="footer-logo">
-            <p>Tel : 051-638-3798 F : 051-638-3798</p>
-            <p>대표이사: 설진련 / 사업자번호 : 777-88-03503</p>
-            <p>부산광역시 부산진구 중앙대로 629-11, 402호(범천동)</p>
+            <img src="img/logo/tosscarLogo_.png" alt="토스카 로고" class="footer-logo">
+            
+            <div class="footer-info">
+                <p>대표이사: 설진련</p>
+                <p>사업자번호: 777-88-03503</p>
+                <p>부산광역시 부산진구 중앙대로 629-11, 402호(범천동)</p>
+            </div>
+            
+            <div class="footer-contact">
+                <p>Tel: 051-638-3798 | Fax: 051-638-3798</p>
+            </div>
         </div>
     </footer>
 
