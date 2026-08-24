@@ -62,10 +62,34 @@
         .header-content {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
             max-width: 400px;
             margin: 0 auto;
             height: 35px;
+        }
+
+        .admin-btn {
+            font-size: 13px;
+            font-weight: 600;
+            color: #007AFF;
+            background: rgba(0, 122, 255, 0.09);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .admin-btn:hover {
+            background: rgba(0, 122, 255, 0.18);
+            transform: scale(1.03);
+        }
+
+        .admin-btn:active {
+            transform: scale(0.96);
         }
 
         .logo {
@@ -631,8 +655,8 @@
         <!-- Header -->
         <div class="header">
             <div class="header-content">
-                <!-- HTML -->
-                <img src="img/logo/tosscarLogo_.png" alt="토스카 로고" class="logo ">
+                <img src="img/logo/tosscarLogo_.png" alt="토스카 로고" class="logo">
+                <a id="ahaMobileLink" href="https://gazette-impossible-structures-charger.trycloudflare.com" class="admin-btn">관리자</a>
             </div>
         </div>
 
@@ -648,18 +672,6 @@
                     토스카를 만나면 쉽고 안전한<br>보험 라이프를 선사합니다.
                 </div>
             </div>
-
-            <h3 class="section-title">아하 관제</h3>
-            <a id="ahaMobileLink" href="https://dietary-angels-delete-ontario.trycloudflare.com" target="_blank" class="special-card driver-card" style="margin-bottom: 24px; background: linear-gradient(135deg, #007AFF, #0051A8); color: white;">
-                <div class="special-icon" style="background: rgba(255,255,255,0.2);">
-                    <img src="img/check.png" alt="아하" style="filter: brightness(0) invert(1);">
-                </div>
-                <div class="insurance-info">
-                    <div class="insurance-company" style="color: rgba(255,255,255,0.8);">24시간 실시간 관제 프록시</div>
-                    <div class="insurance-benefit" style="color: white;">아하 모바일 바로가기</div>
-                </div>
-                <img src="img/enter.png" alt="이동" class="arrow-icon" style="filter: brightness(0) invert(1); opacity: 0.8;">
-            </a>
 
             <h3 class="section-title">보험료 조회</h3>
 
