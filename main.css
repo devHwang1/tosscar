@@ -1,0 +1,86 @@
+.all {
+    width: 100%;
+    max-width: 100%; /* 컨테이너가 화면 크기를 벗어나지 않도록 설정 */
+    height: auto; /* 높이를 자동으로 조정하여 컨텐츠에 맞게 설정 */
+    margin: 0;
+    padding: 0; /* 여백을 제거합니다. */
+}
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.topContent {
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    overflow-x: hidden; /* 가로 스크롤바를 숨깁니다. */
+}
+
+.companyList{
+    background-color: white;
+    width: 100%;
+    height: 560px;
+    border-radius: 18px;
+}
+.KB{
+    display: flex;
+
+}
+.logo{
+    margin-left: 10px;
+}
+.companyContent{
+    font-size: 12px;color: #aeaeae;font-weight: 400;position: relative;top: 6px;
+}
+.logo {
+    width: 60px; height: 60px; background-color: black; border-radius: 12px; margin-top: 15px;
+}
+.share{
+    background-color: white;
+    width: 100%;
+    height: 75px;
+    border-radius: 18px;
+}
+.info{
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    opacity: 0; /* 초기에 투명 상태로 시작 */
+    transition: opacity 0.5s; /* 투명도 전환에 대한 애니메이션 지정 */
+}
+
+.modal.show {
+    display: block;
+    opacity: 1; /* 투명도 1로 변경하여 나타남 */
+}
+
+.modal-content {
+    background-color: #fff;
+    width: 60%;
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
